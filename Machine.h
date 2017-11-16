@@ -29,7 +29,6 @@ private:
     NMStateMap mTranscatMap;
     LISTENER*  mListener;
     NCString   mCurEvent;
-    NCSyncObj  mAuthSync;
 };
 
 template <typename LISTENER>
@@ -93,14 +92,12 @@ bool NMStateMachine<LISTENER>::eventOccur(const NCString& event)
 template <typename LISTENER>
 int32_t NMStateMachine<LISTENER>::getCurState()
 {
-    NCAutoSync autoSync(mAuthSync);
     return mCurState;
 }
 
 template <typename LISTENER>
 int32_t NMStateMachine<LISTENER>::getPreState()
 {
-    NCAutoSync autoSync(mAuthSync);
     return mPreState;
 }
 
